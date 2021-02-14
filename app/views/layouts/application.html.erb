@@ -31,13 +31,14 @@
     <!-- TODO this section should be updated based on your business requirements. -->
     <script>
       function consentGranted() {
+        // alert(gtag('get', 'consent'))
         gtag('consent', 'update', {
-          'ad_storage': 'granted'
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted'
         });
         console.log('consent granted');
       }
     </script>
-
 
     <title>Gotconsent</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -50,10 +51,8 @@
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <!--
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJPDMC7"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    -->
     <!-- End Google Tag Manager (noscript) -->
 
     <%= yield %>
