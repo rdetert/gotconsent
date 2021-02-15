@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-WJPDMC7"></script>
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-WJPDMC7"></script>-->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -9,8 +9,8 @@
       // Default ad_storage to 'denied'.
       gtag('consent', 'default', {
         'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'wait_for_update': 500 //,
+        'analytics_storage': 'denied' //,
+        //'wait_for_update': 500 //,
         //'region': ['US-CA', 'EU']
       });
 
@@ -31,12 +31,37 @@
     <!-- TODO this section should be updated based on your business requirements. -->
     <script>
       function consentGranted() {
-        // alert(gtag('get', 'consent'))
+        setCookie('consentGranted', '1', 100)
         gtag('consent', 'update', {
           'ad_storage': 'granted',
           'analytics_storage': 'granted'
         });
         console.log('consent granted');
+      }
+    </script>
+
+    <script>
+      // W3School
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
       }
     </script>
 

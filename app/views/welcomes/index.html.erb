@@ -24,5 +24,37 @@
 
 <%= link_to 'New Welcome', new_welcome_path %>
 
+<p>
 
-<button onclick="consentGranted()"> ALLOW COOKIES </button>
+<script>
+  function displayConsentConfirmation() {
+    let el = document.createElement('p'),
+      txt = document.createTextNode('COOKIE CONSENT AUTHORIZED'),
+      consentDiv = document.getElementById('consent');
+      el.appendChild(txt);
+      consent.appendChild(el);
+  }
+
+  function displayConsentButton() {
+    if (getCookie('consentGranted') != '1')
+    {
+      let el = document.createElement('button'),
+        txt = document.createTextNode(" ALLOW COOKIES "),
+        consentDiv = document.getElementById('consent');
+      el.appendChild(txt);
+      consent.appendChild(el);
+      el.addEventListener('click', function() {
+        consentGranted();
+        displayConsentConfirmation();
+      });
+    } else {
+      displayConsentConfirmation();
+    }
+  }
+</script>
+<div id="consent">
+  <script>displayConsentButton();</script>
+  <!--
+  <button onclick="consentGranted()"> ALLOW COOKIES </button>
+  -->
+</div>
